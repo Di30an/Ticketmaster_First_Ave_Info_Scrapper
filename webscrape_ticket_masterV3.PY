@@ -38,7 +38,7 @@ def get_artists():
                 artist_new.save() # Saves the object in the database
 
             else:
-                print('duplicate artist') # Maybe put something more meaningful here?
+                print('already added') # Maybe put something more meaningful here?
     except Exception as e:
         print(e)
 
@@ -63,25 +63,22 @@ def get_venues():
     except IntegrityError as e: 
         print(e)
 # Not full fucntional yet. Need to filter out the shows to make sure that there are not duplicates. 
-def get_shows(): 
+# def get_shows(): 
     
-    query = {'apikey': key , 'stateCode' : 'MN', 'name' : 'music'}
+#     query = {'apikey': key , 'stateCode' : 'MN', 'name' : 'music'}
     
-    try:
-        data = requests.get(event_url,params=query).json()
-        events = data['_embedded']['events']
+#     try:
+#         data = requests.get(event_url,params=query).json()
+#         events = data['_embedded']['events']
     
-        for event in events:
-                artist_name = event['name']
-                venue_name = event['_embedded']['venues'][0]['name']
-                date = event['dates']['start']['dateTime']
-                event_new = Show(art)
-                print(artist_name,venue_name, date)
-                venues = Venue.objects.filter()
+#         for event in events:
+#                 artist_name = event['name']
+#                 venue_name = event['_embedded']['venues'][0]['name']
+#                 date = event['dates']['start']['dateTime']
                 
-    except Exception as e: 
-            print('Error fetching shows')
-            print(e)
+#     except Exception as e: 
+#             print('Error')
+#             print(e)
 
 
 if __name__ == "__main__":
